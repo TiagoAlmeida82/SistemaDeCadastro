@@ -1,11 +1,11 @@
-package usuario.app.sistemadecadastro;
+package usuario.app.sistemadecadastro.model;
 
-public class Registro {
+public class Contact {
 
     private String nome;
     private String endereco;
     private String telefone;
-    public Registro(String nome, String endereco, String telefone)
+    public Contact(String nome, String endereco, String telefone)
     {
         this.nome = nome;
         this.endereco = endereco;
