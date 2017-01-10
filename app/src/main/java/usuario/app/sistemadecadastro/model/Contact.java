@@ -1,18 +1,43 @@
 package usuario.app.sistemadecadastro.model;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
+
+@Parcel(Parcel.Serialization.BEAN)
 public class Contact {
+    private String name;
+    private String address;
+    private String phoneNumber;
 
-    private String nome;
-    private String endereco;
-    private String telefone;
-    public Contact(String nome, String endereco, String telefone)
+    @ParcelConstructor
+    public Contact(String name, String address, String phoneNumber)
     {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.telefone = telefone;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
     }
-    public String getNome() { return nome; }
-    public String getTelefone() { return telefone; }
-    public String getEndereco() { return endereco; }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

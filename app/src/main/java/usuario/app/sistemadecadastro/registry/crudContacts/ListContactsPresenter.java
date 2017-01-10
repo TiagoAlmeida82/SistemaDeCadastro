@@ -1,4 +1,4 @@
-package usuario.app.sistemadecadastro.registry.listContacts;
+package usuario.app.sistemadecadastro.registry.crudContacts;
 
 import usuario.app.sistemadecadastro.model.Contact;
 

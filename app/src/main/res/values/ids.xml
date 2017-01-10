@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
+    <item name="action_bar" type="id" />
+    <item name="contact_name_txv" type="id" />
+    <item name="list_contacts_recycler_view" type="id" />
 </resources>

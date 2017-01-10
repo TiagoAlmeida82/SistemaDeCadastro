@@ -10,16 +10,29 @@ import usuario.app.sistemadecadastro.model.Contact;
  */
 
 public class ContactRepo {
+    private static List<Contact> sContacts;
 
-    public static List<Contact> sContacts;
+    public static List<Contact> retrieveContacts() {
+        getsContacts().add(new Contact("Tiago", "Marechal", "(16)997343735"));
+        getsContacts().add(new Contact("Suellen", "Douradinho", "(16)997343734"));
+        getsContacts().add(new Contact("Janete", "Rodrigues Cajado", "(16)997343735"));
 
+        return getsContacts();
+    }
 
-    public static List<Contact> retrieveContacts(){
-        sContacts = new ArrayList<>();
-        sContacts.add(new Contact("Tiago", "Marechal", "(16)997343735"));
-        sContacts.add(new Contact("Suellen", "Douradinho", "(16)997343734"));
-        sContacts.add(new Contact("Janete", "Rodrigues Cajado", "(16)997343735"));
-
+    private static List<Contact> getsContacts() {
+        if (sContacts == null) {
+            sContacts = new ArrayList<>();
+        }
         return sContacts;
     }
+
+    public static void addContact(Contact contact) {
+        getsContacts().add(contact);
+    }
+
+    public static void deleteContact(Contact contact) {
+        getsContacts().remove(contact);
+    }
+
 }

@@ -4,15 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    // Status bar
-    <android.support.v7.widget.Toolbar
-        style="@style/Widget.AppCompat.Toolbar"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        />
+        android:animateLayoutChanges="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:paddingRight="16dp"
+            app:layout_scrollFlags="enterAlways" />
+    </android.support.design.widget.AppBarLayout>
+
 
     <FrameLayout
         android:id="@+id/main_fragment_container"
@@ -22,3 +30,6 @@
 
 
 </android.support.design.widget.CoordinatorLayout>
+
+
+

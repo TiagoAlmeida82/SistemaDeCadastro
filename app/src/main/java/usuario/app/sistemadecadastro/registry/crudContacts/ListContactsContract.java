@@ -1,4 +1,4 @@
-package usuario.app.sistemadecadastro.registry.listContacts;
+package usuario.app.sistemadecadastro.registry.crudContacts;
 
 /**
  * Created by suellencolangelo on 26/12/16.
