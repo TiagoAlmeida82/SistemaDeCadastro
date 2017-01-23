@@ -1,5 +1,6 @@
-package usuario.app.sistemadecadastro.registry.crudContacts;
+package usuario.app.sistemadecadastro.registry.crudContacts.list;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,17 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.parceler.Parcels;
+
 import usuario.app.sistemadecadastro.R;
+import usuario.app.sistemadecadastro.model.Contact;
+import usuario.app.sistemadecadastro.registry.crudContacts.detail.ContactDetailActivity;
 import usuario.app.sistemadecadastro.repository.ContactRepo;
 
 /**
  * Created by suellencolangelo on 26/12/16.
  */
 
-public class ListContactsFragment extends Fragment implements ListContactsContract.View {
+public class ContactsFragment extends Fragment implements ContactsContract.View, ContactsAdapter.OnItemClickListener {
+    private ContactsAdapter mAdapter;
 
-    public static ListContactsFragment newInstance() {
-        ListContactsFragment fragment = new ListContactsFragment();
+    public static ContactsFragment newInstance() {
+        ContactsFragment fragment = new ContactsFragment();
         return fragment;
     }
 
@@ -31,8 +37,17 @@ public class ListContactsFragment extends Fragment implements ListContactsContra
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
 
-        ListContactsAdapter adapter = new ListContactsAdapter(ContactRepo.retrieveContacts());
-        recyclerView.setAdapter(adapter);
+        mAdapter = new ContactsAdapter(ContactRepo.retrieveContacts(), this);
+        recyclerView.setAdapter(mAdapter);
         return root;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Contact contact = mAdapter.getItem(position);
+
+        Intent intent = new Intent(getActivity(), ContactDetailActivity.class);
+        intent.putExtra(ContactDetailActivity.CONTACT, Parcels.wrap(contact));
+        startActivity(intent);
     }
 }

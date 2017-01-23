@@ -1,4 +1,4 @@
-package usuario.app.sistemadecadastro.registry.crudContacts;
+package usuario.app.sistemadecadastro.registry.crudContacts.list;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -17,11 +17,15 @@ import usuario.app.sistemadecadastro.model.Contact;
  * Created by suellencolangelo on 26/12/16.
  */
 
-public class ListContactsAdapter extends RecyclerView.Adapter<ListContactsAdapter.ViewHolder> {
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
     @NonNull
     private List<Contact> contacts;
 
-    public ListContactsAdapter(@NonNull List<Contact> contacts) {
+    @NonNull
+    private OnItemClickListener mListener;
+
+    public ContactsAdapter(@NonNull List<Contact> contacts, @NonNull OnItemClickListener listener) {
+        this.mListener = listener;
         this.contacts = contacts;
     }
 
@@ -32,7 +36,7 @@ public class ListContactsAdapter extends RecyclerView.Adapter<ListContactsAdapte
 
         // Infla o layout da célula da lista
         View contactView = inflater.inflate(R.layout.contact_item, parent, false);
-        return new ViewHolder(contactView);
+        return new ViewHolder(contactView, mListener);
     }
 
     @Override
@@ -50,13 +54,26 @@ public class ListContactsAdapter extends RecyclerView.Adapter<ListContactsAdapte
         return contacts.get(position);
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nameTxv;
+        OnItemClickListener listener;
 
-
-        ViewHolder(View itemView) {
+        ViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             nameTxv = (TextView) itemView.findViewById(R.id.contact_name_txv);
+            this.listener = listener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (listener != null) {
+                listener.onItemClick(getLayoutPosition());
+            }
         }
     }
 }

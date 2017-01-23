@@ -1,4 +1,4 @@
-package usuario.app.sistemadecadastro.registry.crudContacts;
+package usuario.app.sistemadecadastro.registry.crudContacts.list;
 
 /**
  * Created by suellencolangelo on 26/12/16.
@@ -8,7 +8,7 @@ package usuario.app.sistemadecadastro.registry.crudContacts;
 import usuario.app.sistemadecadastro.model.Contact;
 
 
-public interface ListContactsContract {
+public interface ContactsContract {
     // Implementada pela activity, pela fragment, pelo adapter - atualização da tela.
     // mostrar mensagem de erro e status
     interface View {
